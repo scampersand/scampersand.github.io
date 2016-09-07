@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="no-js"><!-- modernizr rewrites to class="js" -->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width">
+
+        <!--===========================================================
+             site and page titles, with open graph
+        =============================================================-->
+        
+            <title>ePrintCenter &bull; Scampersand</title>
+        
+        <meta property="og:site_name" content="Scampersand">
+        <meta property="og:title" content="ePrintCenter">
+
+        <!--===========================================================
+             page description
+        =============================================================-->
+        
+
+        
+
+        <script src="/js/vendor/modernizr-3.3.1-custom.min.js"></script>
+
+        <link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+        <style>
+            /* Workaround for typekit FOUT.
+             * html.js is provided by modernizr and prevents this applying if JS
+             * is disabled (hi Ernie).
+             */
+            html.js body { display: none }
+        </style>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.21.0/ramda.min.js"></script>
+
+        <script>
+            // Mobile safari on iOS 7 (iphone 4) doesn't justify
+            // vertically even though modernizr reports that it supports
+            // flexbox. This hack adds another class to match on.
+            if (navigator.userAgent.match(/(iPad|iPhone);.*CPU.*OS [3-7](_|\b)/i)) {
+                $('html').addClass('no-flexbox-vertical-center');
+            }
+        </script>
+
+        <script src="https://use.typekit.net/don3dwd.js"></script>
+        <script>
+            !function() {
+                function reveal() {
+                    // Make sure body is available when this runs.
+                    $(function() {
+                        $('body').fadeIn(300);  // default 400
+                    });
+                }
+                try {
+                    // https://helpx.adobe.com/typekit/using/font-events.html
+                    Typekit.load({
+                        async: true,
+                        active: reveal,
+                        inactive: reveal
+                    });
+                } catch(e) {
+                    reveal();
+                }
+            }();
+        </script>
+
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-77612407-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+
+    <body class="">
+    <main role="main">
+        <header>
+            <div class="section-container">
+                <nav class="menu">
+    <a class="menu-toggle close" href="#" tabindex="-1"><i class="fa fa-times" aria-hidden="true"></i></a>
+
+    <ul>
+        <li >
+            <a href="/">Home</a>
+        </li>
+
+        
+        
+            
+            
+            <li >
+                <a href="/services">Services</a>
+            </li>
+        
+            
+            
+            <li class="current-item">
+                <a href="/work">Work</a>
+            </li>
+        
+            
+            
+            <li >
+                <a href="/team">Team</a>
+            </li>
+        
+            
+            
+            <li >
+                <a href="/contact">Contact</a>
+            </li>
+        
+    </ul>
+</nav>
+
+<a class="menu-toggle open" href="#" tabindex="-1"><i class="fa fa-bars" aria-hidden="true"></i></a>
+
+<script>
+    $(function() {
+        $('.menu-toggle').click(function(e) {
+            e.preventDefault();
+            $('.menu').toggleClass('show');
+            $('.menu-toggle').toggle();
+        });
+    });
+
+    $(window).resize(function() {
+        $('.menu').removeAttr('style');
+        $('.menu-toggle').removeAttr('style');
+    });
+</script>
+
+                <p class="site-wordmark"><a href="/">Scampersand</a></p>
+            </div>
+        </header>
+
+        
+        <section class="content">
+    <div class="section-header">
+        <div class="section-container">
+            <div class="proj-name">
+                <h2>ePrintCenter</h2>
+            </div>
+            <div class="proj-skills">
+                <ul>
+                    <li>Django Development</li>
+                    <li>Front-End Development</li>
+                    <li>API Integration</li>
+                    <li>Deployment &amp; Scaling</li>
+                </ul>
+            </div>
+        </div>
+    </div> <!-- .section-header -->
+
+    <div class="section-content">
+        <div class="section-container">
+            <div class="section-sub">
+                <p class="intro">
+                    HP&#8217;s web-enabled printers receive print jobs over the
+                    Internet and run apps similar to a phone or tablet.
+                    These features are configured by customers at the
+                    ePrintCenter website. After signing in, one can change
+                    settings such as print quality and duplex, configure
+                    cloud services such as the ePrint email address, and
+                    load apps from the catalog.
+                </p>
+            </div>
+
+            
+
+            <div class="section-sub">
+                <div class="proj-problem">
+                    <h3>Problem</h3>
+                    <p>
+                        Scampersand founders Aron &amp; Amy&#8212;employed by HP at the
+                        time&#8212;joined the ePrintCenter team shortly after the
+                        initial release. Schedule pressure had forced
+                        compromises such as copying data manually between
+                        servers, and this was coming back to bite in the form of
+                        customer-visible bugs. Integration testing was
+                        non-existent because teams hadn&#8217;t built staging servers
+                        for other teams to develop against. Site deployments
+                        were synchronized with printer hardware releases, taking
+                        a toll on the developers in the form of late-night
+                        &#8220;deployment parties.&#8221; Meanwhile the servers struggled as
+                        traffic surged.
+                    </p>
+                    <p>
+                        It was an exciting time to jump in.
+                    </p>
+                </div>
+            </div>
+
+            <div class="section-sub">
+                <div class="proj-solution">
+                    <div class="solution-text">
+                        <h3>Solution</h3>
+                        <p>
+                            We contributed to numerous feature releases during
+                            our year and a half on the team. Here are some of
+                            the highlights:
+                        </p>
+                        <ul class="solution-list">
+                            <li>
+                                Coordinating with a team in India, we built the
+                                prototype of an app provisioning service to act
+                                as a central authority governing which apps were
+                                available and installed on a printer. This would
+                                eventually replace manually copied data with an
+                                API designed to meet the needs of the various
+                                stakeholders. Among those was ePrintCenter
+                                itself, which we ported to use the new
+                                service.
+                            </li>
+                            <li>
+                                We built a cluster of virtual machines so that
+                                remote teams could run integration tests against
+                                ePrintCenter snapshots with production
+                                parity.
+                            </li>
+                            <li>
+                                To decouple site updates from printer hardware
+                                releases, we added run-time configuration flags
+                                with date triggers so that deployments could
+                                proceed on their own schedule.
+                            </li>
+                            <li>
+                                We added localized page delivery for the
+                                ePrintCenter site using Akamai, to handle the
+                                increased customer traffic taking country and
+                                language into account.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="solution-features">
+                        <h5>Unique Features</h5>
+                        <ul class="features-list">
+                            <li>Site translated into 26 languages</li>
+                            <li>Restricted content by country and printer model</li>
+                            <li>Red Hat Cluster for integration VMs</li>
+                            <li>Global development collaboration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- .section-container -->
+    </div> <!-- .section-content -->
+</section>
+
+<footer role="nav">
+    <div class="section-container">
+        <h3><a href="/work/dearsanta">Next Project: Dear Santa&nbsp;&rarr;</a></h3>
+    </div>
+</footer>
+
+
+
+    </main>
+
+    <script>
+        $(function() {
+            var $main = $('main'),
+                $footer = $('footer'),
+                emSize = parseFloat($('html').css('font-size'));
+            if ($footer.length) {
+                function adjustMainPadding() {
+                    var footerHeight = $('footer').height();
+                    $main.css('padding-bottom', footerHeight + emSize * 2)
+                }
+                setInterval(adjustMainPadding, 300);
+            }
+        });
+    </script>
+</body>
+
+</html>
