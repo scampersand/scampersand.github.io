@@ -46,12 +46,15 @@
 
         <script src="https://use.typekit.net/don3dwd.js"></script>
         <script>
-            !function() {
+            $(document).on('typekitReveal', function () {
+                // Make sure body is available when this runs.
+                $(function() {
+                    $('body').fadeIn(300)  // default 400
+                })
+            })
+            ;(function() {
                 function reveal() {
-                    // Make sure body is available when this runs.
-                    $(function() {
-                        $('body').fadeIn(300);  // default 400
-                    });
+                    $(document).trigger('typekitReveal')
                 }
                 try {
                     // https://helpx.adobe.com/typekit/using/font-events.html
@@ -59,11 +62,11 @@
                         async: true,
                         active: reveal,
                         inactive: reveal
-                    });
+                    })
                 } catch(e) {
-                    reveal();
+                    reveal()
                 }
-            }();
+            })()
         </script>
 
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -144,23 +147,20 @@
         
 
 <section class="content">
-    <div class="slab">
-        <div class="container">
-            <h2 class="t-upper">Contact Us</h2>
-        </div>
-    </div> <!-- .slab -->
-
     <div class="content-basic">
         <div class="container">
             <div class="grid-row">
-                <p class="t-large">
-                    Tell us about your project, ask us questions, figure
-                    out if we&rsquo;re the right fit. We&rsquo;d love to be in touch,
-                    by email or over a cup of coffee.
-                </p>
+                <div class="grid-three-quarters">
+                    <h2>Contact Us</h2>
+                    <p>
+                        Tell us about your project, ask us questions, figure
+                        out if we&rsquo;re the right fit. We&rsquo;d love to be in touch,
+                        by email or over a cup of coffee.
+                    </p>
+                </div>
             </div>
             <div class="grid-row">
-                <div class="grid-half-left">
+                <div class="grid-main">
                     <form class="contact" action="https://formspree.io/hello@scampersand.com"
                         method="POST">
                         <input type="hidden" name="_subject" value="Hello!">
@@ -183,79 +183,10 @@
                         <input type="submit" value="Send">
                     </form>
                 </div>
-                <div class="grid-half-right large-screen-only">
-                    <h3 class="section t-upper">Our Location</h3>
-                    <div class="map-container">
-                        <!-- width/height default to desktop display, esp since we can't predict values for mobile -->
-                        <div class="overlay"></div>
-                        <iframe class="map" width="409" height="272" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d743.229655930909!2d-71.38850097074915!3d41.830050397994064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e4452bff321d05%3A0x58d2d4aa47906f4b!2sAngell+St+%26+Wayland+Ave%2C+Providence%2C+RI+02906!5e0!3m2!1sen!2sus!4v1481815541054" frameborder="0" style="border:0" allowfullscreen></iframe>
-                    </div>
-                    <script>
-                        // Don't zoom the iframe with the mouse wheel until it's
-                        // been clicked, then allow all pointer events through the
-                        // overlay to the iframe.
-                        // http://stackoverflow.com/questions/21992498
-                        $('.map-container .overlay').click(function(e) {
-                            $(e.target).css('pointer-events', 'none');
-                        });
-
-                        // Detect the size of the enclosing div--which is set by
-                        // span()--and set the iframe size accordingly.
-                        $(function() {
-                            var $body = $('body'),
-                                $div = $('.map-container'),
-                                $iframe = $('iframe.map'),
-                                oldAttrs = {};
-                            function resizeMap() {
-                                var bodyWidth = $body.width(),
-                                    divWidth = $div.width(),
-                                    ratio = divWidth > bodyWidth / 2 ? 1 : 1,
-                                    mapWidth = Math.floor(divWidth * ratio),
-                                    mapHeight = Math.floor(mapWidth * 1 / 2),
-                                    newAttrs = {
-                                        width: mapWidth,
-                                        height: mapHeight,
-                                    };
-                                if (! R.equals(newAttrs, oldAttrs)) {
-                                    $iframe.attr(newAttrs);
-                                    oldAttrs = newAttrs;
-                                }
-                            }
-                            setInterval(resizeMap, 300);
-                        });
-                    </script>
-                </div>
             </div> <!-- .grid-row -->
         </div> <!-- .container -->
     </div> <!-- .content-basic -->
 </section>
-
-<footer>
-    <div class="container">
-        <div class="grid-row">
-            <div class="grid-half-left large-screen-only">
-                <ul class="list-simple">
-                    <li><h4>Services</h4></li>
-                    <li>Web Application Development</li>
-                    <li>Design &amp; User Experience</li>
-                    <li>API Integration</li>
-                    <li>Deployment, Scaling &amp; Security</li>
-                </ul>
-            </div>
-            <div class="grid-half-right">
-                <ul class="list-simple">
-                    <li><h4>Follow Us</h4></li>
-                    <li>
-                        <p class="contact-icons">
-                            <a href="https://twitter.com/scampersandco"><i class="fa fa-twitter-square"></i></a>
-                            <a href="https://github.com/scampersand"><i class="fa fa-github-square"></i></a>
-                            <a href="https://www.linkedin.com/company/scampersand"><i class="fa fa-linkedin-square"></i></a>
-                        </p>
-                    </li>
-            </div>
-        </div>
-    </div> <!-- .container -->
-</footer>
 
 <script>
     // Replace https://scampersand.com with dev hostname
@@ -269,22 +200,53 @@
     }();
 </script>
 
+        <footer>
+            <div class="container">
+                <div class="grid-row">
+                    <div class="grid-half-left">
+                        <h4>Scampersand</h4>
+                        <p class="t-small">Providence, RI</p>
+                    </div>
+                    <div class="grid-half-right">
+                        <ul class="list-simple">
+                            <li>
+                                <p class="contact-icons">
+                                    <a href="https://twitter.com/scampersandco"><i class="fa fa-twitter-square"></i></a>
+                                    <a href="https://github.com/scampersand"><i class="fa fa-github-square"></i></a>
+                                    <a href="https://www.linkedin.com/company/scampersand"><i class="fa fa-linkedin-square"></i></a>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div> <!-- .container -->
+        </footer>
     </main>
 
     <script>
-        $(function() {
-            var $main = $('main'),
-                $footer = $('footer'),
-                emSize = parseFloat($('html').css('font-size'));
-            if ($footer.length) {
+        $(document).on('typekitReveal', function () {
+            // ensure body is available
+            $(function () {
+                var $main = $('main'),
+                    $footer = $('footer'),
+                    emSize = parseFloat($('html').css('font-size'))
+
                 function adjustMainPadding() {
-                    var footerHeight = $('footer').height();
+                    var footerHeight = $footer.height()
                     $main.css('padding-bottom', footerHeight + emSize * 2)
                 }
-                setInterval(adjustMainPadding, 300);
-            }
-        });
+
+                // adjust immediately since we're triggered by
+                // typekitReveal custom event.
+                adjustMainPadding()
+
+                // adjust continuously in case things change on the page.
+                setInterval(adjustMainPadding, 300)
+            })
+        })
     </script>
 </body>
+
+
 
 </html>

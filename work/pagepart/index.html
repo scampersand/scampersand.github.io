@@ -46,12 +46,15 @@
 
         <script src="https://use.typekit.net/don3dwd.js"></script>
         <script>
-            !function() {
+            $(document).on('typekitReveal', function () {
+                // Make sure body is available when this runs.
+                $(function() {
+                    $('body').fadeIn(300)  // default 400
+                })
+            })
+            ;(function() {
                 function reveal() {
-                    // Make sure body is available when this runs.
-                    $(function() {
-                        $('body').fadeIn(300);  // default 400
-                    });
+                    $(document).trigger('typekitReveal')
                 }
                 try {
                     // https://helpx.adobe.com/typekit/using/font-events.html
@@ -59,11 +62,11 @@
                         async: true,
                         active: reveal,
                         inactive: reveal
-                    });
+                    })
                 } catch(e) {
-                    reveal();
+                    reveal()
                 }
-            }();
+            })()
         </script>
 
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -142,19 +145,12 @@
 
         
         <section class="content">
-    <div class="slab">
-        <div class="container">
-            <div class="proj-name">
-                <h2 class="t-upper">PagePart</h2>
-            </div>
-        </div>
-    </div> <!-- .slab -->
-
     <div class="content-prose">
         <div class="container">
             <div class="grid-row">
                 <div class="grid-callout">
-                    <p class="t-large">
+                    <h2>PagePart</h2>
+                    <p>
                         PagePart provides mobile-friendly sites for small
                         businesses. The sites are easy to customize with
                         pluggable parts.
@@ -217,7 +213,7 @@
                     </div>
                     <div class="grid-sidebar">
                         <ul class="list-ruled">
-                            <li><h4 class="t-upper">Unique Features</h4></li>
+                            <li><h4>Unique Features</h4></li>
                             <li>Facebook sign in</li>
                             <li>Themeable mobile sites</li>
                             <li>Pluggable integrations</li>
@@ -234,34 +230,65 @@
                 </div>
             </div>
 
+            <div class="grid-row">
+                <div class="grid-main">
+                    <p><a href="/work/ripta">Read next&#8288;&hellip; RIPTA Zoom&ensp;&raquo;</a></p>
+                </div>
+            </div>
+
         </div> <!-- .container -->
     </div> <!-- .content-prose -->
 </section>
 
-<footer role="nav">
-    <div class="container">
-        <h3><a href="/work/eprintcenter">Next Project: ePrintCenter&nbsp;&rarr;</a></h3>
-    </div> <!-- .container -->
-</footer>
 
 
-
+        <footer>
+            <div class="container">
+                <div class="grid-row">
+                    <div class="grid-half-left">
+                        <h4>Scampersand</h4>
+                        <p class="t-small">Providence, RI</p>
+                    </div>
+                    <div class="grid-half-right">
+                        <ul class="list-simple">
+                            <li>
+                                <p class="contact-icons">
+                                    <a href="https://twitter.com/scampersandco"><i class="fa fa-twitter-square"></i></a>
+                                    <a href="https://github.com/scampersand"><i class="fa fa-github-square"></i></a>
+                                    <a href="https://www.linkedin.com/company/scampersand"><i class="fa fa-linkedin-square"></i></a>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div> <!-- .container -->
+        </footer>
     </main>
 
     <script>
-        $(function() {
-            var $main = $('main'),
-                $footer = $('footer'),
-                emSize = parseFloat($('html').css('font-size'));
-            if ($footer.length) {
+        $(document).on('typekitReveal', function () {
+            // ensure body is available
+            $(function () {
+                var $main = $('main'),
+                    $footer = $('footer'),
+                    emSize = parseFloat($('html').css('font-size'))
+
                 function adjustMainPadding() {
-                    var footerHeight = $('footer').height();
+                    var footerHeight = $footer.height()
                     $main.css('padding-bottom', footerHeight + emSize * 2)
                 }
-                setInterval(adjustMainPadding, 300);
-            }
-        });
+
+                // adjust immediately since we're triggered by
+                // typekitReveal custom event.
+                adjustMainPadding()
+
+                // adjust continuously in case things change on the page.
+                setInterval(adjustMainPadding, 300)
+            })
+        })
     </script>
 </body>
+
+
 
 </html>

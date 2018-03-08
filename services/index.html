@@ -46,12 +46,15 @@
 
         <script src="https://use.typekit.net/don3dwd.js"></script>
         <script>
-            !function() {
+            $(document).on('typekitReveal', function () {
+                // Make sure body is available when this runs.
+                $(function() {
+                    $('body').fadeIn(300)  // default 400
+                })
+            })
+            ;(function() {
                 function reveal() {
-                    // Make sure body is available when this runs.
-                    $(function() {
-                        $('body').fadeIn(300);  // default 400
-                    });
+                    $(document).trigger('typekitReveal')
                 }
                 try {
                     // https://helpx.adobe.com/typekit/using/font-events.html
@@ -59,11 +62,11 @@
                         async: true,
                         active: reveal,
                         inactive: reveal
-                    });
+                    })
                 } catch(e) {
-                    reveal();
+                    reveal()
                 }
-            }();
+            })()
         </script>
 
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -142,25 +145,22 @@
 
         
         <section class="content">
-    <div class="slab">
-        <div class="container">
-            <h2 class="t-upper">Services</h2>
-        </div>
-    </div> <!-- .slab -->
-
     <div class="content-basic">
         <div class="container">
             <div class="grid-row">
-                <p class="t-large">
-                    We dive in with you to understand your needs, so that
-                    everything we build makes sense for your business.
-                </p>
+                <div class="grid-three-quarters">
+                    <h2>Services</h2>
+                    <p>
+                        We dive in with you to understand your needs, so that
+                        everything we build makes sense for your business.
+                    </p>
+                </div>
             </div>
             <div class="grid-row">
                 <ul class="cards">
                     <li class="services-card">
-                        <h3>Web Application Development</h3>
-                        <h3 class="highlight">&#8212;</h3>
+                        <h4>Web Application Development</h4>
+                        <h4 class="highlight">&#8212;</h4>
                         <p class="services">
                             Your business depends on the web. Whether you&rsquo;re
                             starting from scratch or need new features on your
@@ -172,8 +172,8 @@
                         </p>
                     </li>
                     <li class="services-card">
-                        <h3>Design &amp; User Experience</h3>
-                        <h3 class="highlight">&#8212;</h3>
+                        <h4>Design &amp; User Experience</h4>
+                        <h4 class="highlight">&#8212;</h4>
                         <p class="services">
                             Good user experience converts visitors into
                             customers, and keeps them coming back. We can help
@@ -184,8 +184,8 @@
                         </p>
                     </li>
                     <li class="services-card">
-                        <h3>API Integration</h3>
-                        <h3 class="highlight">&#8212;</h3>
+                        <h4>API Integration</h4>
+                        <h4 class="highlight">&#8212;</h4>
                         <p class="services">
                             Modern websites leverage third-party integrations to
                             deliver features that would be
@@ -198,8 +198,8 @@
                         </p>
                     </li>
                     <li class="services-card">
-                        <h3>Deployment, Scaling &amp; Security</h3>
-                        <h3 class="highlight">&#8212;</h3>
+                        <h4>Deployment, Scaling &amp; Security</h4>
+                        <h4 class="highlight">&#8212;</h4>
                         <p class="services">
                             The cloud offers unprecedented flexibility to scale
                             your application to match your needs, while
@@ -217,31 +217,53 @@
     </div> <!-- .content-basic -->
 </section>
 
-<footer role="nav">
-    <div class="container">
-        <h3>Curious about what we&rsquo;ve done before?</h3>
-        <p>
-            Check out some of <a href="/work"/>our previous work.</a>
-        </p>
-    </div> <!-- .container -->
-</footer>
-
+        <footer>
+            <div class="container">
+                <div class="grid-row">
+                    <div class="grid-half-left">
+                        <h4>Scampersand</h4>
+                        <p class="t-small">Providence, RI</p>
+                    </div>
+                    <div class="grid-half-right">
+                        <ul class="list-simple">
+                            <li>
+                                <p class="contact-icons">
+                                    <a href="https://twitter.com/scampersandco"><i class="fa fa-twitter-square"></i></a>
+                                    <a href="https://github.com/scampersand"><i class="fa fa-github-square"></i></a>
+                                    <a href="https://www.linkedin.com/company/scampersand"><i class="fa fa-linkedin-square"></i></a>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div> <!-- .container -->
+        </footer>
     </main>
 
     <script>
-        $(function() {
-            var $main = $('main'),
-                $footer = $('footer'),
-                emSize = parseFloat($('html').css('font-size'));
-            if ($footer.length) {
+        $(document).on('typekitReveal', function () {
+            // ensure body is available
+            $(function () {
+                var $main = $('main'),
+                    $footer = $('footer'),
+                    emSize = parseFloat($('html').css('font-size'))
+
                 function adjustMainPadding() {
-                    var footerHeight = $('footer').height();
+                    var footerHeight = $footer.height()
                     $main.css('padding-bottom', footerHeight + emSize * 2)
                 }
-                setInterval(adjustMainPadding, 300);
-            }
-        });
+
+                // adjust immediately since we're triggered by
+                // typekitReveal custom event.
+                adjustMainPadding()
+
+                // adjust continuously in case things change on the page.
+                setInterval(adjustMainPadding, 300)
+            })
+        })
     </script>
 </body>
+
+
 
 </html>

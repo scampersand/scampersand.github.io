@@ -46,12 +46,15 @@
 
         <script src="https://use.typekit.net/don3dwd.js"></script>
         <script>
-            !function() {
+            $(document).on('typekitReveal', function () {
+                // Make sure body is available when this runs.
+                $(function() {
+                    $('body').fadeIn(300)  // default 400
+                })
+            })
+            ;(function() {
                 function reveal() {
-                    // Make sure body is available when this runs.
-                    $(function() {
-                        $('body').fadeIn(300);  // default 400
-                    });
+                    $(document).trigger('typekitReveal')
                 }
                 try {
                     // https://helpx.adobe.com/typekit/using/font-events.html
@@ -59,11 +62,11 @@
                         async: true,
                         active: reveal,
                         inactive: reveal
-                    });
+                    })
                 } catch(e) {
-                    reveal();
+                    reveal()
                 }
-            }();
+            })()
         </script>
 
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -142,45 +145,24 @@
 
         
         <section class="content">
-    <div class="slab">
-        <div class="container">
-            <h2 class="t-upper">Our Work</h2>
-        </div>
-    </div> <!-- .slab -->
-
     <div class="content-basic">
         <div class="container">
             <div class="grid-row">
-                <p class="t-large">
-                    Our experience ranges from rapid development for
-                    startups to complex enterprise projects.
-                </p>
+                <div class="grid-three-quarters">
+                    <h2>Our Work</h2>
+                    <p>
+                        Our experience ranges from rapid development for
+                        startups to complex enterprise projects.
+                    </p>
+                </div>
             </div>
             <div class="grid-row">
                 <ul class="cards">
                     <li class="work-card">
-                        <a href="/work/ripta">
-                            <div class="work-photo">
-                                <div class="work-overlay">
-                                    <h3 class="t-upper">RIPTA Zoom</h3>
-                                    <p>
-                                        Visualizing Rhode Island bus transit
-                                    </p>
-                                </div>
-                                <img srcset="/work/ripta/card-bg-1694.jpg 1694w,
-                                             /work/ripta/card-bg-1122.jpg 1122w,
-                                             /work/ripta/card-bg-847.jpg 847w,
-                                             /work/ripta/card-bg-561.jpg 561w"
-                                     sizes="(min-width: 56em) 561px, 100vw"
-                                     src="/work/ripta/card-bg-561.jpg">
-                            </div>
-                        </a>
-                    </li>
-                    <li class="work-card">
                         <a href="/work/fec">
                             <div class="work-photo">
                                 <div class="work-overlay">
-                                    <h3>betaFEC</h3>
+                                    <h3>FEC.gov</h3>
                                     <p>
                                         Campaign finance transparency
                                     </p>
@@ -195,28 +177,10 @@
                         </a>
                     </li>
                     <li class="work-card">
-                        <a href="/work/brevi">
-                            <div class="work-photo">
-                                <div class="work-overlay">
-                                    <h3 class="t-upper">Brevi</h3>
-                                    <p>
-                                        Facebook ads simplified
-                                    </p>
-                                </div>
-                                <img srcset="/work/brevi/card-bg-1694.jpg 1694w,
-                                             /work/brevi/card-bg-1122.jpg 1122w,
-                                             /work/brevi/card-bg-847.jpg 847w,
-                                             /work/brevi/card-bg-561.jpg 561w"
-                                     sizes="(min-width: 56em) 561px, 100vw"
-                                     src="/work/brevi/card-bg-561.jpg">
-                            </div>
-                        </a>
-                    </li>
-                    <li class="work-card">
                         <a href="/work/pagepart">
                             <div class="work-photo">
                                 <div class="work-overlay">
-                                    <h3 class="t-upper">PagePart</h3>
+                                    <h3>PagePart</h3>
                                     <p>
                                         Mobile sites for small businesses
                                     </p>
@@ -231,10 +195,46 @@
                         </a>
                     </li>
                     <li class="work-card">
+                        <a href="/work/ripta">
+                            <div class="work-photo">
+                                <div class="work-overlay">
+                                    <h3>RIPTA Zoom</h3>
+                                    <p>
+                                        Rhode Island bus transit visualization
+                                    </p>
+                                </div>
+                                <img srcset="/work/ripta/card-bg-1694.jpg 1694w,
+                                             /work/ripta/card-bg-1122.jpg 1122w,
+                                             /work/ripta/card-bg-847.jpg 847w,
+                                             /work/ripta/card-bg-561.jpg 561w"
+                                     sizes="(min-width: 56em) 561px, 100vw"
+                                     src="/work/ripta/card-bg-561.jpg">
+                            </div>
+                        </a>
+                    </li>
+                    <li class="work-card">
+                        <a href="/work/brevi">
+                            <div class="work-photo">
+                                <div class="work-overlay">
+                                    <h3>Brevi</h3>
+                                    <p>
+                                        Simplified Facebook advertising
+                                    </p>
+                                </div>
+                                <img srcset="/work/brevi/card-bg-1694.jpg 1694w,
+                                             /work/brevi/card-bg-1122.jpg 1122w,
+                                             /work/brevi/card-bg-847.jpg 847w,
+                                             /work/brevi/card-bg-561.jpg 561w"
+                                     sizes="(min-width: 56em) 561px, 100vw"
+                                     src="/work/brevi/card-bg-561.jpg">
+                            </div>
+                        </a>
+                    </li>
+                    <li class="work-card">
                         <a href="/work/eprintcenter">
                             <div class="work-photo">
                                 <div class="work-overlay">
-                                    <h3 class="t-upper">ePrintCenter</h3>
+                                    <h3>ePrintCenter</h3>
                                     <p>
                                         Managing HP&rsquo;s web-enabled printers
                                     </p>
@@ -248,55 +248,59 @@
                             </div>
                         </a>
                     </li>
-                    <li class="work-card">
-                        <a href="/work/dearsanta">
-                            <div class="work-photo">
-                                <div class="work-overlay">
-                                    <h3 class="t-upper">Dear Santa</h3>
-                                    <p>
-                                        Share some Christmas wishes
-                                    </p>
-                                </div>
-                                <img srcset="/work/dearsanta/card-bg-1694.jpg 1694w,
-                                             /work/dearsanta/card-bg-1122.jpg 1122w,
-                                             /work/dearsanta/card-bg-847.jpg 847w,
-                                             /work/dearsanta/card-bg-561.jpg 561w"
-                                     sizes="(min-width: 56em) 561px, 100vw"
-                                     src="/work/dearsanta/card-bg-561.jpg">
-                            </div>
-                        </a>
-                    </li>
                 </ul>
             </div>
         </div> <!-- .container -->
     </div> <!-- .content-basic -->
 </section>
 
-<footer role="nav">
-    <div class="container">
-        <h3>Who is Scampersand?</h3>
-        <p>
-            <a href="/team">Meet the team.</a>
-        </p>
-    </div> <!-- .container -->
-</footer>
-
+        <footer>
+            <div class="container">
+                <div class="grid-row">
+                    <div class="grid-half-left">
+                        <h4>Scampersand</h4>
+                        <p class="t-small">Providence, RI</p>
+                    </div>
+                    <div class="grid-half-right">
+                        <ul class="list-simple">
+                            <li>
+                                <p class="contact-icons">
+                                    <a href="https://twitter.com/scampersandco"><i class="fa fa-twitter-square"></i></a>
+                                    <a href="https://github.com/scampersand"><i class="fa fa-github-square"></i></a>
+                                    <a href="https://www.linkedin.com/company/scampersand"><i class="fa fa-linkedin-square"></i></a>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div> <!-- .container -->
+        </footer>
     </main>
 
     <script>
-        $(function() {
-            var $main = $('main'),
-                $footer = $('footer'),
-                emSize = parseFloat($('html').css('font-size'));
-            if ($footer.length) {
+        $(document).on('typekitReveal', function () {
+            // ensure body is available
+            $(function () {
+                var $main = $('main'),
+                    $footer = $('footer'),
+                    emSize = parseFloat($('html').css('font-size'))
+
                 function adjustMainPadding() {
-                    var footerHeight = $('footer').height();
+                    var footerHeight = $footer.height()
                     $main.css('padding-bottom', footerHeight + emSize * 2)
                 }
-                setInterval(adjustMainPadding, 300);
-            }
-        });
+
+                // adjust immediately since we're triggered by
+                // typekitReveal custom event.
+                adjustMainPadding()
+
+                // adjust continuously in case things change on the page.
+                setInterval(adjustMainPadding, 300)
+            })
+        })
     </script>
 </body>
+
+
 
 </html>

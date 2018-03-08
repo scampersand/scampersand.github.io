@@ -1,16 +1,7 @@
 design
 * button type size
-* get rid of map
 * fix media queries
 * not found page
-
-refactoring
-* t-large has more component-specific knowledge that it is used half-width
-  on larger screens
-
-    initial     1.125
-    48em        1.5
-    56em        1.2142
 
 * missing scale definitions for
 
@@ -19,3 +10,6 @@ refactoring
   site-wordmark
   menu-toggle
 
+
+have a $susy settings map for each breakpoint, so
+one for mobile, one for tablet, one for desktop
