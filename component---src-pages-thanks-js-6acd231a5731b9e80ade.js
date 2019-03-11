@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{189:function(e,t,n){"use strict";n.r(t);var c=n(8),d=(n(0),n(254));t.default=function(){return Object(c.d)(d.y,{title:"Thanks!"},Object(c.d)(d.f,null,Object(c.d)(d.a,{pt:"20.5vh"},Object(c.d)(d.w,{href:"/"},Object(c.d)(d.n,{textAlign:"center"},"Scampersand"))),Object(c.d)(d.a,{py:"6vh"},Object(c.d)(d.u,{textAlign:"center"},"Thanks! We'll be in touch."))))}}}]);
+//# sourceMappingURL=component---src-pages-thanks-js-6acd231a5731b9e80ade.js.map
